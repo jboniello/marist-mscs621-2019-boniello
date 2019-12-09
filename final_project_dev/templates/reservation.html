@@ -43,7 +43,6 @@
 	
       {% endfor %}
 	</table>
-
       <br>
       <div>
       <form action="" method="post">
@@ -51,8 +50,8 @@
 
 			{% if user.email == "None" %}
 				<p> You are not logged in! Please log in to schedule. <p>
-				<A href="http://127.0.0.1:5000/login">Login Now</A>
-				<br><A href="http://127.0.0.1:5000/index.html">Home</A>
+				<A href="http://{{request.host}}/login">Login Now</A>
+				<br><A href="http://{{request.host}}/index.html">Home</A>
 			{% else %}
 
 			<h4> You are logged in as: {{user.email}}. </h4>
@@ -79,7 +78,7 @@
 
 	<div style="float:left; margin-left: 15px;">	
                 <input style="float: right;margin-top: 15px;" class="btn btn-success btn-shadow" type="submit" value="Submit">
-		<br><br><A href="http://127.0.0.1:5000/index.html">Home</A>
+		<br><br><A href="http://{{request.host}}/index.html">Home</A>
 
 	</div>
 
