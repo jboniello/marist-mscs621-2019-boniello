@@ -17,6 +17,17 @@ class Reservation:
 		self.reservation_seat = ""
 		self.reservation_total = ""
 
+	def getReservations(self,user):
+		try:
+			user.connectAsRead()
+			sql = "SELECT * FROM Reservation"
+			user.cursor.execute(sql)
+			data = user.cursor.fetchall()
+			print("-----------------------------")
+
+			return data
+		except:
+			return "ERROR"
 
 	def addReservation(self,user):
 		try:

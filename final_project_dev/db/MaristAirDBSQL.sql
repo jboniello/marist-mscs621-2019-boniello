@@ -158,7 +158,7 @@ GRANT SELECT ON TABLE `MaristAir`.* TO 'readuser';
 
 
 CREATE USER 'insertuser' IDENTIFIED BY 'insertuser1';
-GRANT SELECT, INSERT, TRIGGER ON TABLE `MaristAir`.* TO 'insertuser';
+GRANT SELECT, UPDATE, INSERT, TRIGGER ON TABLE `MaristAir`.* TO 'insertuser';
 
 -- Comment out create admin user since created by AWS already --
 -- CREATE USER 'admin' IDENTIFIED BY 'admin1';

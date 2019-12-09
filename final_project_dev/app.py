@@ -259,6 +259,25 @@ def reservation():
 		return render_template("reservation.html", user=user,flight_list=flight_list,option_list=option_list)
 
 
+@app.route("/listing", methods=['GET', 'POST'])
+def listing():
+	user = User(dbHost,dbPort)
+	reservation = Reservation()
+	reservations = reservation.getReservations(user)
+	listing_list = []
+	for i in range(0,len(reservations)):
+	        listing	= Reservation()
+	        listing.reservation_id = reservations[i][0]	
+	        listing.flight_id = reservations[i][1]	
+	        listing.user_id = reservations[i][2]	
+	        listing.billing_id = reservations[i][3]	
+	        listing.timestamp = reservations[i][4]	
+	        listing.reservation_seat = reservations[i][5]	
+	        listing.reservation_total = reservations[i][6]	
+	        listing_list.append(listing)
+
+	return render_template("listing.html",dbHost=dbHost,dbPort=dbPort,listing_list=listing_list)
+
 @app.route("/changeDatabase", methods=['GET', 'POST'])
 def changeDatabase():
 	global dbHost

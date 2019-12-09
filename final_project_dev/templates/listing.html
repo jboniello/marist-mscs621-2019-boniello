@@ -1,0 +1,53 @@
+<!doctype html>
+<head>
+        <!--- Javascripts -->
+        <script src="{{url_for('static', filename='js/jquery-3.2.0.js')}}"></script>    
+        <script src="{{url_for('static', filename='jquery-ui-1.12.1.custom/jquery-ui.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
+
+
+
+{% include 'header.html' %}
+</head>
+
+<body>
+
+<div id="content">
+{% include 'flash.html' %}
+<br>
+
+<h1>All reservations made: </h1>
+
+
+      <table>
+	<th style="padding: 10px;"><u>Reservation ID</u> </th>
+	<th style="padding: 10px;"><u>Flight ID</u></th>
+	<th style="padding: 10px;"><u>User ID</u></th>
+	<th style="padding: 10px;"><u>Billing ID</u></th>
+	<th style="padding: 10px;"><u>Entry Created</u></th>
+	<th style="padding: 10px;"><u>Seat Number</u></th>
+	<th style="padding: 10px;"><u>Total Cost</u></th>
+
+      {% for reservation in listing_list %}
+	<tr>
+	<td style="padding:10px;">{{reservation.reservation_id}} </td>
+	<td style="padding:10px;">{{reservation.flight_id}}</td>
+	<td style="padding:10px;">{{reservation.user_id}}</td>
+	<td style="padding:10px;">{{reservation.billing_id}}</td>
+	<td style="padding:10px;">{{reservation.timestamp}}</td>
+	<td style="padding:10px;">{{reservation.reservation_seat}}</td>
+	<td style="padding:10px;">{{reservation.reservation_total}}</td>
+	</tr>
+	
+      {% endfor %}
+	</table>
+      <br>
+
+      <A href="http://{{request.host}}/index.html">Home</A>
+
+</div>
+
+
+</body>
+</html>
+
