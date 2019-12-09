@@ -75,12 +75,7 @@ CREATE TABLE IF NOT EXISTS `MaristAir`.`Plane` (
   `plane_model` VARCHAR(60) NOT NULL,
   `plane_seats` INT NOT NULL,
   PRIMARY KEY (`plane_id`),
-  INDEX `fk_airline_id_idx` (`airline_id` ASC),
-  CONSTRAINT `fk_airline_id`
-    FOREIGN KEY (`airline_id`)
-    REFERENCES `MaristAir`.`Airline` (`airline_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_airline_id_idx` (`airline_id` ASC))
 ENGINE = InnoDB;
 
 
@@ -101,22 +96,7 @@ CREATE TABLE IF NOT EXISTS `MaristAir`.`Flight` (
   PRIMARY KEY (`flight_id`),
   INDEX `fk_flight_source_idx` (`flight_source_city` ASC),
   INDEX `fk_flight_dest_idx` (`flight_dest_city` ASC),
-  INDEX `fk_plane_id_idx` (`plane_id` ASC),
-  CONSTRAINT `fk_flight_source_city`
-    FOREIGN KEY (`flight_source_city`)
-    REFERENCES `MaristAir`.`City` (`city_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_flight_dest_city`
-    FOREIGN KEY (`flight_dest_city`)
-    REFERENCES `MaristAir`.`City` (`city_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_plane_id`
-    FOREIGN KEY (`plane_id`)
-    REFERENCES `MaristAir`.`Plane` (`plane_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_plane_id_idx` (`plane_id` ASC))
 ENGINE = InnoDB;
 
 
@@ -137,12 +117,7 @@ CREATE TABLE IF NOT EXISTS `MaristAir`.`Billing` (
   `billing_zip` DECIMAL(5,0) NOT NULL,
   `billing_timestamp` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`billing_id`),
-  INDEX `fk_user_id_idx` (`user_id` ASC),
-  CONSTRAINT `fk_user_id`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `MaristAir`.`User` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_user_id_idx` (`user_id` ASC))
 ENGINE = InnoDB;
 
 
@@ -160,22 +135,7 @@ CREATE TABLE IF NOT EXISTS `MaristAir`.`Reservation` (
   PRIMARY KEY (`reservation_id`),
   INDEX `fk_user_id_idx` (`user_id` ASC),
   INDEX `fk_flight_id_idx` (`flight_id` ASC),
-  INDEX `fk_billing_id_idx` (`billing_id` ASC),
-  CONSTRAINT `fk_user_id`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `MaristAir`.`User` (`user_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_flight_id`
-    FOREIGN KEY (`flight_id`)
-    REFERENCES `MaristAir`.`Flight` (`flight_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_billing_id`
-    FOREIGN KEY (`billing_id`)
-    REFERENCES `MaristAir`.`Billing` (`billing_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_billing_id_idx` (`billing_id` ASC))
 ENGINE = InnoDB;
 
 
@@ -186,17 +146,7 @@ CREATE TABLE IF NOT EXISTS `MaristAir`.`Option_List` (
   `reservation_id` INT NOT NULL,
   `option_id` INT NOT NULL,
   PRIMARY KEY (`reservation_id`, `option_id`),
-  INDEX `fk_option_id_idx` (`option_id` ASC),
-  CONSTRAINT `fk_reservation_id`
-    FOREIGN KEY (`reservation_id`)
-    REFERENCES `MaristAir`.`Reservation` (`reservation_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_option_id`
-    FOREIGN KEY (`option_id`)
-    REFERENCES `MaristAir`.`Options` (`option_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_option_id_idx` (`option_id` ASC))
 ENGINE = InnoDB;
 
 
@@ -210,13 +160,13 @@ GRANT SELECT ON TABLE `MaristAir`.* TO 'readuser';
 CREATE USER 'insertuser' IDENTIFIED BY 'insertuser1';
 GRANT SELECT, INSERT, TRIGGER ON TABLE `MaristAir`.* TO 'insertuser';
 
-
-CREATE USER 'admin' IDENTIFIED BY 'admin1';
-GRANT ALL ON `MaristAir`.* TO 'admin';
-GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE `MaristAir`.* TO 'admin';
-GRANT EXECUTE ON ROUTINE `MaristAir`.* TO 'admin';
-GRANT SELECT ON TABLE `MaristAir`.* TO 'admin';
-
+-- Comment out create admin user since created by AWS already --
+-- CREATE USER 'admin' IDENTIFIED BY 'admin1';
+-- GRANT ALL ON `MaristAir`.* TO 'admin';
+-- GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE `MaristAir`.* TO 'admin';
+-- GRANT EXECUTE ON ROUTINE `MaristAir`.* TO 'admin';
+-- GRANT SELECT ON TABLE `MaristAir`.* TO 'admin';
+-- 
 
 
 
