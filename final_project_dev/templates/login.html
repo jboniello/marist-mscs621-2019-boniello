@@ -1,0 +1,45 @@
+<!doctype html>
+<head>
+
+
+        <!--- Javascripts -->
+        <script src="{{url_for('static', filename='js/jquery-3.2.0.js')}}"></script>    
+        <script src="{{url_for('static', filename='jquery-ui-1.12.1.custom/jquery-ui.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
+
+
+
+{% include 'header.html' %}
+</head>
+
+<body>
+
+<div id="content">
+
+{% include 'flash.html' %}
+<br>
+
+<h1>Please Login: </h1>
+      <br>
+      <form action="" method="post">
+	<div style="width:400px;">
+
+        <input type="text" class="form-control" placeholder="Email" name="username" value="{{
+          request.form.username }}">
+         <br>
+         <input type="password" class="form-control" placeholder="Password" name="password" value="{{
+          request.form.password }}">
+        <input style="float: right;margin-top: 15px;" class="btn btn-success btn-shadow" type="submit" value="Login">
+	</div>
+	<br>
+
+
+      </form>
+
+	<br><br>	
+		<A href="http://127.0.0.1:5000/index.html">Home</A>
+</div>
+
+</body>
+</html>
+

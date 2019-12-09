@@ -1,0 +1,99 @@
+<!doctype html>
+<head>
+        <!--- Javascripts -->
+        <script src="{{url_for('static', filename='js/jquery-3.2.0.js')}}"></script>    
+        <script src="{{url_for('static', filename='jquery-ui-1.12.1.custom/jquery-ui.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
+
+
+
+{% include 'header.html' %}
+</head>
+
+<body>
+
+<div id="content">
+{% include 'flash.html' %}
+<br>
+
+<h1>Schedule a flight: </h1>
+
+
+      <table>
+	<th style="padding: 10px;"><u>Flight ID</u> </th>
+	<th style="padding: 10px;"><u>Source</u></th>
+	<th style="padding: 10px;"><u>Source Gate</u></th>
+	<th style="padding: 10px;"><u>Depart</u></th>
+	<th style="padding: 10px;"><u>Destination</u></th>
+	<th style="padding: 10px;"><u>Dest. Gate</u></th>
+	<th style="padding: 10px;"><u>Arrive</u></th>
+	<th style="padding: 10px;"><u>Airline</u></th>
+
+      {% for flight in flight_list %}
+	<tr>
+	<td style="padding:10px;">{{flight.flight_id}} </td>
+	<td style="padding:10px;">{{flight.source_name}}</td>
+	<td style="padding:10px;">{{flight.flight_source_gate}}</td>
+	<td style="padding:10px;">{{flight.flight_depart}}</td>
+	<td style="padding:10px;">{{flight.dest_name}}</td>
+	<td style="padding:10px;">{{flight.flight_dest_gate}}</td>
+	<td style="padding:10px;">{{flight.flight_arrive}}</td>
+	<td style="padding:10px;">{{flight.airline_name}}</td>
+	</tr>
+	
+      {% endfor %}
+	</table>
+
+      <br>
+      <div>
+      <form action="" method="post">
+		<div style="float:left;width:350px;margin-left: 15px;">
+
+			{% if user.email == "None" %}
+				<p> You are not logged in! Please log in to schedule. <p>
+				<A href="http://127.0.0.1:5000/login">Login Now</A>
+				<br><A href="http://127.0.0.1:5000/index.html">Home</A>
+			{% else %}
+
+			<h4> You are logged in as: {{user.email}}. </h4>
+			<Label for="flight">Select a flight #:</label>
+			<select class="form-control" name="flight" id="flight">
+			{% for flight in flight_list %}
+			       <option value="{{flight.flight_id}}">{{flight.flight_id}}</option>
+			{% endfor %}
+			</select>	
+
+			<br>
+
+			{% for option in option_list %}
+
+				<input type="checkbox" name="option{{option.option_id}}" value="{{option.option_id}}"> {{option.option_name}}<br>
+
+			{% endfor %}
+
+		</div>
+
+		<div style="float:left;width:350px;margin-left: 15px;">
+			{% include 'billing.html' %}
+		</div>
+
+	<div style="float:left; margin-left: 15px;">	
+                <input style="float: right;margin-top: 15px;" class="btn btn-success btn-shadow" type="submit" value="Submit">
+		<br><br><A href="http://127.0.0.1:5000/index.html">Home</A>
+
+	</div>
+
+			{% endif %}
+
+	</div>
+
+	<br>
+
+
+      </form>
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,48 @@
+<!doctype html>
+<head>
+
+        <!--- Javascripts -->
+        <script src="{{url_for('static', filename='js/jquery-3.2.0.js')}}"></script>    
+        <script src="{{url_for('static', filename='jquery-ui-1.12.1.custom/jquery-ui.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
+
+
+{% include 'header.html' %}
+</head>
+
+<body>
+
+<div id="content">
+
+{% include 'flash.html' %}
+<br>
+
+<h1>Change application's database target: </h1>
+      <br>
+
+      <h3>Current Target: {{ dbHost }} </h3>
+      <h3>Current Port: {{ dbPort }} </h3>
+      <br>
+      <form action="" method="post">
+	<div style="width:400px;">
+	<br><label>New Target (Database Host IP):</label>
+        <input type="text" class="form-control" placeholder="IP Address" name="databaseHost" id="databaseHost" value="{{request.form.databaseHost }}">
+	<br><label>New Port:</label>
+        <input type="text" class="form-control" placeholder="Port #" name="databasePort" id="databasePort" value="{{request.form.databasePort }}">
+        <input style="float: right;margin-top: 15px;" class="btn btn-success btn-shadow" type="submit" value="Submit">
+	</div>
+	<br>
+
+
+      </form>
+
+
+
+<A href="http://127.0.0.1:5000/index.html">Home</A>
+
+
+</div>
+
+</body>
+</html>
+

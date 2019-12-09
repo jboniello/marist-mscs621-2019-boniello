@@ -1,0 +1,75 @@
+<!doctype html>
+<head>
+        <!--- Javascripts -->
+        <script src="{{url_for('static', filename='js/jquery-3.2.0.js')}}"></script>    
+        <script src="{{url_for('static', filename='jquery-ui-1.12.1.custom/jquery-ui.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
+
+
+
+{% include 'header.html' %}
+</head>
+
+<body>
+
+<div id="content">
+{% include 'flash.html' %}
+<br>
+
+<h1>Enter new flight information below: </h1>
+      <br>
+      <form action="" method="post">
+	<div style="width:400px;margin-left: 15px;">
+
+                <Label for="sourceCity">Select a Source City:</label>
+                <select class="form-control" name="sourceCity" id="sourceCity">
+                {% for city in city_list %}
+                       <option value="{{city.city_id}}">{{city.city_name}}</option>
+                {% endfor %}
+                </select>	
+
+
+		<br><input type="text" class="form-control" placeholder="Depart Time (YYYY-MM-DD HH:MM:SS)" name="depart" value="{{request.form.depart }}">
+		<br><input type="text" class="form-control" placeholder="Depart Gate" name="departGate" value="{{request.form.departGate }}">
+
+
+		<br>
+
+                <Label for="destCity">Select a Destination City:</label>
+                <select class="form-control" name="destCity" id="destCity">
+                {% for city in city_list %}
+                       <option value="{{city.city_id}}">{{city.city_name}}</option>
+                {% endfor %}
+                </select>  
+
+                <br><input type="text" class="form-control" placeholder="Arrive Time (YYYY-MM-DD HH:MM:SS)" name="arrive" value="{{request.form.arrive }}">
+                <br><input type="text" class="form-control" placeholder="Arrive Gate" name="arriveGate" value="{{request.form.arriveGate }}">
+		<br><br>
+
+
+
+		<Label for="plane">Select a plane:</label>
+                <select class="form-control" name="plane" id="plane">
+                {% for plane in plane_list %}
+                       <option value="{{plane.plane_id}}">Plane #{{plane.plane_id}}: {{plane.airline_name}} , {{plane.plane_model}}</option>
+                {% endfor %}
+                </select>  
+
+		<br>
+		<Label for="price">Set price:</label>
+                <br><input type="text" class="form-control" placeholder="Base price" name="price" value="{{request.form.price }}">
+
+        	<input style="float: right;margin-top: 15px;" class="btn btn-success btn-shadow" type="submit" value="Submit">
+	</div>
+	<br>
+
+
+      </form>
+
+	<br><br>	
+		<A href="http://127.0.0.1:5000/index.html">Home</A>
+</div>
+
+</body>
+</html>
+

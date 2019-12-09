@@ -1,0 +1,48 @@
+<!doctype html>
+<head>
+
+        <!--- Javascripts -->
+        <script src="{{url_for('static', filename='js/jquery-3.2.0.js')}}"></script>    
+        <script src="{{url_for('static', filename='jquery-ui-1.12.1.custom/jquery-ui.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
+
+
+{% include 'header.html' %}
+</head>
+
+<body>
+
+<div id="content">
+
+{% include 'flash.html' %}
+<br>
+
+<h1>Create your account: </h1>
+      <br>
+      <form action="" method="post">
+	<div style="width:400px;">
+	<br><label>Username (email):</label>
+        <input type="text" class="form-control" placeholder="Email" name="email" value="{{request.form.email }}">
+	<br><label>Phone:</label>
+        <input type="text" class="form-control" placeholder="Phone" name="phone" value="{{request.form.phone }}">
+	<br><label>Enter password:</label>
+        <input type="password" class="form-control" placeholder="Password" name="password1" value="{{request.form.password1 }}">
+	<br><label>Enter password again: </label>
+        <input type="password" class="form-control" placeholder="" name="password2" value="{{request.form.password2 }}">
+        <input style="float: right;margin-top: 15px;" class="btn btn-success btn-shadow" type="submit" value="Submit">
+	</div>
+	<br>
+
+
+      </form>
+
+
+
+<A href="http://127.0.0.1:5000/index.html">Home</A>
+
+
+</div>
+
+</body>
+</html>
+

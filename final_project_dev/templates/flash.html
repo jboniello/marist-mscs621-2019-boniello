@@ -1,0 +1,39 @@
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+		<div id=flash-container class="container" style="min-height:100%; width:100%">
+            {% for message in messages %}
+		{% if message == None %}
+		{% elif "WARNING" in message %}
+                  <div class="alert alert-warning alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        {{message}}
+                  </div>
+
+		{% elif "ERROR" in message %}
+                  <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        {{message}}
+                  </div>
+		
+		{% elif "Success" in message %}
+		   <div class="alert alert-success alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        {{message}}
+                  </div>
+
+		{% else %}
+		  <div class="alert alert-info alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        {{message}}
+                  </div>
+		{% endif %}
+
+                {% endfor %}
+          </div>
+
+          {% endif %}
+        {% endwith %}
+
+
+
+

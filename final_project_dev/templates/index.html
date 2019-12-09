@@ -1,0 +1,31 @@
+<!doctype html>
+<head>
+        <!--- Javascripts -->
+        <script src="{{url_for('static', filename='js/jquery-3.2.0.js')}}"></script>    
+        <script src="{{url_for('static', filename='jquery-ui-1.12.1.custom/jquery-ui.js')}}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='bootstrap-3.3.7-dist/js/bootstrap.min.js') }}"></script>
+
+{% include 'header.html' %}
+</head>
+
+<body>
+
+<div id="content">
+{% include 'flash.html' %}
+<br>
+
+<h1>Select page: </h1>
+      <br>
+
+	<A href="http://127.0.0.1:5000/createAccount">Create an Account</A>
+	<br><A href="http://127.0.0.1:5000/login">Login</A>
+	<br><A href="http://127.0.0.1:5000/logout">Logout</A>
+	<br><A href="http://127.0.0.1:5000/reservation">Reserve a flight (user)</A>
+	<br><A href="http://127.0.0.1:5000/addFlight">Add a flight (admin)</A>
+	<br><A href="http://127.0.0.1:5000/changeDatabase">Change DB Target (admin)</A>
+
+</div>
+
+</body>
+</html>
+
