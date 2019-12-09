@@ -16,7 +16,7 @@ from Classes import Billing
 
 app = Flask(__name__)
 app.secret_key = "thisisasecret"
-dbHost = "db"
+dbHost = "maristairdb1.ced3raw81xcn.us-east-1.rds.amazonaws.com"
 dbPort = "3306"
 
 
