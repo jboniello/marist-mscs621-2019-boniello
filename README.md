@@ -49,7 +49,7 @@ IP = http://127.0.0.1:5000
 Valid DBs = ['db', maristairdb1, maristairdb2]
 
 - ***IBM Cloud:***
-IP = 173.193.92.200:31356
+IP = http://173.193.92.200:31356
 Valid DBs =  [maristairdb1, maristairdb2]
 
 - ***AWS ECS:***
