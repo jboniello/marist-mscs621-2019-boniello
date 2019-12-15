@@ -280,6 +280,7 @@ PageNames:
 - Returns HTML containing an input form containing the fields: email, phone, password1, password2
 
 *-POST requests-*
+<br>
 Accepts:
   - email -- string, will be user account name
   - phone -- string, additional contact point
@@ -294,10 +295,11 @@ Action:
 **/login**
 
 *-GET requests-*
-Returns HTML containing an input form containing the fields: email, password
+- Returns HTML containing an input form containing the fields: email, password
 
 *-POST requests-*
-  Accepts:
+<br>
+Accepts:
 - email -- string, user account
 - password -- string, user password
 
@@ -309,13 +311,14 @@ Action:
 **/logout**
 
 *-GET requests-*
-  Returns user to index.html and removes session credentials
+- Returns user to index.html and removes session credentials
 
 <br>
 
 **/addFlight**
 
 *-GET requests-*
+<br>
   Returns HTML with a form containing the following fields:
 - sourceCity -- selectable, predefined list of cities. Fetched from DB
 - depart -- string , will be used to create datetime object in database for departure time
@@ -327,6 +330,7 @@ Action:
 - price -- string, defines base price of a flight before add-on options
 
 *-POST requests-*
+<br>
   Accepts:
    - sourceCity, depart, departGate, destCity, arrive, arriveGate, plane, price
    
@@ -338,52 +342,57 @@ Action:
 **/reservation**
 
 *-GET requests-*
-  Retrieves all current flight listings from the database, as well as available options, and displays them for the user. Additionally will check if user is signed in, and if so will ask them to make a flight selection and add in billing information to the HTML form.
+- Retrieves all current flight listings from the database, as well as available options, and displays them for the user. Additionally will check if user is signed in, and if so will ask them to make a flight selection and add in billing information to the HTML form.
 
 *-POST requests-*
+<br>
   Accepts:
-    flight -- string, the flight ID of the selected flight in the list
-    billingCardNum -- string, credit card number
-    billingCardDate -- string, credit card expiration date. Converted to datetime object on server
-    billingCardCSV -- string, credit card special code on back
-    billingCardFirst -- string, first name
-    billingCardLast -- string, last name
-    billingCardStreet -- string, street address
-    billingCardCity -- string, city
-    billingCardState -- string, state
-    billingCardZip -- string, zip code of city
-    option1, option2, optionN -- option 1 through N are based on available options, retieved during GET. The POST requests accepts the option as a string in form 'optionX', based on the checklist from GET.
+  
+   - flight -- string, the flight ID of the selected flight in the list
+   - billingCardNum -- string, credit card number
+   - billingCardDate -- string, credit card expiration date. Converted to datetime object on server
+   - billingCardCSV -- string, credit card special code on back
+   - billingCardFirst -- string, first name
+   - billingCardLast -- string, last name
+   - billingCardStreet -- string, street address
+   - billingCardCity -- string, city
+   - billingCardState -- string, state
+   - billingCardZip -- string, zip code of city
+   - option1, option2, optionN -- option 1 through N are based on available options, retieved during GET. The POST requests accepts the option as a string in form 'optionX', based on the checklist from GET.
 
   Action:
-    Server will create a reservation ID based on user inputs for flight selection, available options, and billing info. Errors will be returned if any of the options are invalid, or if a credit card is not a valid number.
-    A seat number is assigned based on remaining seats available (based on plane defined by database admin).
-    The total cost of the flight is added based on base price + options.
-    The reservation is assigned a reservation_id, and an entry is submitted to the database
+  - Server will create a reservation ID based on user inputs for flight selection, available options, and billing info. Errors will be returned if any of the options are invalid, or if a credit card is not a valid number.
+  - A seat number is assigned based on remaining seats available (based on plane defined by database admin).
+  - The total cost of the flight is added based on base price + options.
+  - The reservation is assigned a reservation_id, and an entry is submitted to the database
 
-  Note -- user ID is retrieved for the session based on the login operation
+  *Note -- user ID is retrieved for the session based on the login operation*
 
 <br>
 
 **/listing**
 
 *-GET requests-*
-  Retrieves the list of reservations from the table in database, and displays them for an admin user. The list includes:
-    reservation_id -- primary key for a reservation
-    flight_id -- link to flight_id from Flight table
-    user_id -- link to user_id from User table
-    billing_id -- link to a billing_id account from Billing table
-    timestamp -- creation date of the reservation
-    reservation_seat -- seat on the plane
-    reservation_total -- total cost for the reservation
+  <br>
+Retrieves the list of reservations from the table in database, and displays them for an admin user. The list includes:
+
+- reservation_id -- primary key for a reservation
+- flight_id -- link to flight_id from Flight table
+- user_id -- link to user_id from User table
+- billing_id -- link to a billing_id account from Billing table
+- timestamp -- creation date of the reservation
+- reservation_seat -- seat on the plane
+- reservation_total -- total cost for the reservation
 
 <br>
 
 **/changeDatabase**
 
 *-GET requests-*
-  Returns the currently set database target IP address and Port number. As well, returns an HTML form to change the current target IP and Port.
+ - Returns the currently set database target IP address and Port number. As well, returns an HTML form to change the current target IP and Port.
 
 *-POST requests-*
+<br>
   Accepts:
 - databaseHost -- string, the IP address of the new database target
 - databasePort -- string, the Port number of the new database target
