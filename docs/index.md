@@ -1,8 +1,8 @@
 
 
-#MaristAir Cloud Project
+# MaristAir Cloud Project
 
-##-- Introduction --
+## Introduction
 
 This project is a simple airline reservation web application to allow users to schedule flights at an airport. The goal of this project is to showcase a hybrid cloud environment using a real-world example most people have used. There are a few entities to consider regarding booking a flight at an airport:
 
@@ -23,7 +23,7 @@ The admin will want to configure:
 The airport will want to have all the above operational for users at any given time, so they will host their service on a cloud provider for the benefits of constant uptime and scalability.
 
 
-##-- User Interface --
+## User Interface
 The airline application interface is supported using python-flask web framework. This python code exposes the functions that are expected by the stackholders above:
 
 1. index.html - homepage consisting of links to other pages.
@@ -36,11 +36,11 @@ The airline application interface is supported using python-flask web framework.
 7. listing - allows an admin to view all reservations that have been made. 
 
 
-##-- Data Storage --
+## Data Storage 
 The application must save the information somewhere! This is done using a pre-configured MySQL database and making SQL calls to it using python's MySQLDB libraries. The exciting part of this project is the databases for each instance are configurable! For example, one database can hold information regarding all flights within the US. Another can hold flights just within the UK. Another can then hold international flights between the two countries. Since each database is targetable, multiple instances can be spawned for each.
 
 
-##-- Cloud Hybridity --
+## Cloud Hybridity
 Using one instance of the application will get the job done, but to truly benefit from cloud computing, it is essential to be able to run multiple containers. In this demo project, IBM Kubernetes and AWS ECS are used to each host an instance of MaristAir. Even better are these instances can be used to show off selectable database targeting per container!
 
 Each instance is initially set to share a database. So for example, users on both platforms would see shared data. Now either of the running containers can be switched to another configured database at anytime, without a restart! This means that separate data is shown on both sites. This is useful for proving the application's use by a varity of independent organizations that do not want to share data.
