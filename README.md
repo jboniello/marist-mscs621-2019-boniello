@@ -1,9 +1,9 @@
 ### marist-mscs621-2019-boniello
 
 
-#MaristAir Cloud Project
+# MaristAir Cloud Project
 
-##-- Introduction --
+## -- Introduction --
 This project is a simple airline reservation web application to allow users to schedule flights at an airport. The goal of this project is to showcase a hybrid cloud environment using a real-world example most people have used.
 
 The application webpage is meant to be deployed across any number of cloud providers. It is able to integrate with any configured database target, allowing for data flexibility between application instances. As well, this provides options to run the applications in different public clouds and source a private on-premises database or another database in the cloud depending on what the airport needs.
@@ -31,7 +31,7 @@ A general user would then have access to:
 For demo purposes all functions are available, and privilege level is denoted on the homepage. Additionally, two cloud app instances and databases are pre-configured for testing purposes.
 
 
-####Project Objective
+#### Project Objective
 From the course: *The objective is to learn how the native cloud applications can be developed and deployed into the hybrid cloud environment. Each student needs to set up and configure a hybrid cloud environment(IBM Cloud + other cloudand local cloud environment)and run a cloud application that is built by him/herself.*
 
 The application deploys two separate instances of the python flask webpage app 'MaristAir' on IBM Cloud and AWS, and show  each are configurable within the cloud to target independent databases, as well as operate off a single shared database.
@@ -40,7 +40,7 @@ This exemplifies a hybrid cloud environment since many webpages are deployed acc
 
 The ideal use of this application for a single company would have many webpages deployed within multiple clouds and target a private database for security.
 
-####Connectivity
+#### Connectivity
 
 For this project, there are two public webpages & databases that were configured for testing purposes. Connectivity information is as follows:
 
@@ -58,6 +58,7 @@ Valid DBs = [maristairdb1, maristairdb2]
 
 
 *Database Info*
+
 The maristairdb1 and maristairdb2 are the hostnames for the public databases. If testing this project, please use one of these on port 3306 (note, they are the same domain). 
 
 - maristairdb1.ced3raw81xcn.us-east-1.rds.amazonaws.com
@@ -222,10 +223,13 @@ Once initialized, a database admin can use the MySQL command line to initialize 
 
 Below is the image of the project design architecture + deployment. Additionally, the database ERD is shown.
 
-Architecture
+
+**Architecture**<br>
+
 ![Architecture](https://raw.githubusercontent.com/jboniello/marist-mscs621-2019-boniello/master/docs/arch.PNG)
 
-Database Entity Relationship Diagram
+
+**Database Entity Relationship Diagram**<br>
 ![Database ERD](https://raw.githubusercontent.com/jboniello/marist-mscs621-2019-boniello/master/docs/Database/ERD_MaristAir.JPG)
 
 
@@ -242,11 +246,13 @@ where hostip and port are dependent on which cloud instance a user is accessing 
 
 ***IBM***
 http://173.193.92.200:31356/index.html
+<br>
 ***AWS***
 http://3.80.195.167:5000/index.html
+<br>
 ***Local***
 http://127.0.0.1:5000/index.html
-
+<br>
 
 PageNames:
 1. index.html - homepage consisting of links to other pages.
@@ -267,6 +273,7 @@ PageNames:
 - Returns HTML with links to the other method webpages. This page will also display status returned by the server if coming from another page (i.e after a reservation)
 
 <br>
+
 **/createAccount**
 
 *-GET requests-*
@@ -283,6 +290,7 @@ Action:
     Server will check if user email exists already, and if the password1 and password2 are matching. Server will attempt to create account in "User" table within targeted database and return status back to user.
 
 <br>
+
 **/login**
 
 *-GET requests-*
@@ -295,13 +303,16 @@ Returns HTML containing an input form containing the fields: email, password
 
 Action:
     Server will attempt to login to webpage by checking credentials against the information entered into Database during the createAccount step.
+    
 <br>
+
 **/logout**
 
 *-GET requests-*
   Returns user to index.html and removes session credentials
 
 <br>
+
 **/addFlight**
 
 *-GET requests-*
@@ -352,6 +363,7 @@ Action:
   Note -- user ID is retrieved for the session based on the login operation
 
 <br>
+
 **/listing**
 
 *-GET requests-*
@@ -365,6 +377,7 @@ Action:
     reservation_total -- total cost for the reservation
 
 <br>
+
 **/changeDatabase**
 
 *-GET requests-*
