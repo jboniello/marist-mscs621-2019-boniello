@@ -113,7 +113,7 @@ The design was tested using the following setup:
 ##### Docker commands
 - docker build -t maristair:latest .
 - docker tag maristair jboniello/maristair:1.0
-- docker push jboniello/maristair:0.1
+- docker push jboniello/maristair:1.0
 - [The Docker Compose Link](https://github.com/jboniello/marist-mscs621-2019-boniello/blob/master/final_project_dev/docker-compose.yml)
 - docker ps
 ```
@@ -123,8 +123,8 @@ b8993cabb27b        mysql:5.7               "docker-entrypoint.s…"   2 days ag
 ```
 
 ##### Local Database Config:
-mysql --host='127.0.0.1' --port=32000 -u root -p < MaristAirDBSQL.sql
-mysql --host='127.0.0.1' --port=32000 -u root -p < MaristAir_Inserts.sql
+- mysql --host='127.0.0.1' --port=32000 -u root -p < MaristAirDBSQL.sql
+- mysql --host='127.0.0.1' --port=32000 -u root -p < MaristAir_Inserts.sql
 
 
 
