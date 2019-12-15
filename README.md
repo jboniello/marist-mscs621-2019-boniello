@@ -214,7 +214,7 @@ Once initialized, a database admin can use the MySQL command line to initialize 
 -  mysql -u admin -p -h maristairdb1.ced3raw81xcn.us-east-1.rds.amazonaws.com -P 3306 < MaristAirDBSQL.sql
 - mysql -u admin -p -h maristairdb1.ced3raw81xcn.us-east-1.rds.amazonaws.com -P 3306 < MaristAir_Inserts.sql
 
-** maristairdb2**
+**maristairdb2**
 - mysql -u admin -p -h maristairdb2.ced3raw81xcn.us-east-1.rds.amazonaws.com -P 3306 < MaristAirDBSQL.sql
 - mysql -u admin -p -h maristairdb2.ced3raw81xcn.us-east-1.rds.amazonaws.com -P 3306 < MaristAir_Inserts.sql
 
